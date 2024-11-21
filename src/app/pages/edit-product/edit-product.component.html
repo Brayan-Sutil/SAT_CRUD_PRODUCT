@@ -1,0 +1,77 @@
+<div>
+  <form
+    [formGroup]="productForm"
+    #formDir="ngForm"
+    (ngSubmit)="onSubmit()"
+    class="form"
+  >
+    <div>
+      <label for="name">Nome do Produto:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        formControlName="name"
+        [ngClass]="{ 'error-border': name.invalid && formDir.submitted }"
+      />
+      <div *ngIf="name.invalid && formDir.submitted">
+        <span *ngIf="name.errors?.['required']" class="error">
+          Campo obrigatório!
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <label for="weight">Peso do Produto (kg):</label>
+      <input
+        id="weight"
+        name="weight"
+        type="number"
+        step="0.01"
+        formControlName="weight"
+        [ngClass]="{ 'error-border': name.invalid && formDir.submitted }"
+      />
+      <div *ngIf="weight.invalid && formDir.submitted">
+        <span *ngIf="weight.errors?.['required']" class="error">
+          Campo obrigatório!
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <label for="price">Valor do Produto (R$):</label>
+      <input
+        id="price"
+        name="price"
+        step="0.01"
+        formControlName="price"
+        type="number"
+        [ngClass]="{ 'error-border': name.invalid && formDir.submitted }"
+      />
+      <div *ngIf="price.invalid && formDir.submitted">
+        <span *ngIf="price.errors?.['required']" class="error">
+          Campo obrigatório!
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <label for="description">Descrição do Produto:</label>
+      <textarea
+        id="description"
+        name="description"
+        rows="4"
+        formControlName="description"
+        [ngClass]="{ 'error-border': name.invalid && formDir.submitted }"
+        style="max-height: 150px; max-width: 500px; resize: none;"
+      ></textarea>
+      <div *ngIf="description.invalid && formDir.submitted">
+        <span *ngIf="description.errors?.['required']" class="error">
+          Campo obrigatório!
+        </span>
+      </div>
+    </div>
+
+    <input type="submit" value="Editar Produto" />
+  </form>
+</div>

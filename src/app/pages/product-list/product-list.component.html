@@ -1,0 +1,32 @@
+<div>
+  <h1 class="title">Produtos</h1>
+  <ng-container *ngIf="products!.length > 0; else emptyState">
+    <ul>
+      <li *ngFor="let product of products">
+        <div class="info">
+          <h3>{{ product.name }}</h3>
+          <h3>R$: {{ product.price | currency }}</h3>
+        </div>
+        <div class="icons">
+          <i
+            class="material-icons iconedit"
+            (click)="handleEditProduct(product.id)"
+          >
+            edit
+          </i>
+          <i
+            class="material-icons icondelete"
+            (click)="deleteProduct(product.id)"
+          >
+            delete
+          </i>
+        </div>
+      </li>
+    </ul>
+  </ng-container>
+  <ng-template #emptyState>
+    <div class="empty">
+      <p class="empty-state">Nenhum produto encontrado.</p>
+    </div>
+  </ng-template>
+</div>
